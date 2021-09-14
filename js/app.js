@@ -18,8 +18,7 @@ const showProducts = (products) => {
     <img src="${image}" class="card-img-top" alt="...">
       <h5 class="card-title" style="color:blue">${product.title}</h5>
       <h6 style="font-size:20px"><span style="color: orange"><i class="fas fa-star"></i></span> ${product.rating.rate}</h6>
-      <h6 style="font-size:20px"><i class="fas fa-user-alt"> </i> ${product.rating.count}</h6>
-  
+      <h6 style="font-size:20px"><i class="fas fa-user-alt"> </i> ${product.rating.count}</h6>  
       <p style="font-size:15px">Category: ${product.category}</p>
       <h2 style="font-size:25px; color:blue">Price: $ ${product.price}</h2>    
       <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-dark">Add to cart</button>
@@ -77,11 +76,11 @@ const updateTaxAndCharge = () => {
   }
 };
 
-
 //grandTotal update function
 const updateTotal = () => {
   const grandTotal =
     getInputValue("price") + getInputValue("delivery-charge") + getInputValue("total-tax")
   document.getElementById("total").innerText = parseFloat(grandTotal).toFixed(2);
 }
+
 loadProducts();
