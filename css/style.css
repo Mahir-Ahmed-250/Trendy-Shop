@@ -34,12 +34,13 @@ body {
    transition: 0.6s;
  margin-top: 40px;
 margin-left: 30px;
- box-shadow: 10px 5px 20px rgb(42, 41, 40);
+
 
 }
 .single-product:hover {
   transform: translateY(0) scale(1.05);
   background-color: rgb(211, 211, 211);
+  box-shadow: 10px 5px 20px rgb(42, 41, 40);
 }
 
 .single-product img{
