@@ -17,8 +17,11 @@ const showProducts = (products) => {
     <div class="card-body">
     <img src="${image}" class="card-img-top" alt="...">
       <h5 class="card-title" style="color:blue">${product.title}</h5>
-      <h6 style="font-size:20px"><span style="color: orange"><i class="fas fa-star"></i></span> ${product.rating.rate}</h6>
-      <h6 style="font-size:20px"><i class="fas fa-user-alt"> </i> ${product.rating.count}</h6>  
+      <div class="rating">
+      <p><span style='color:orange' id="${product.id}"></span> <span>(${product.rating.rate})</span> </p>
+
+      <span><i class="fas fa-user"></i> ${product.rating.count}</span>
+      </div> 
       <p style="font-size:15px">Category: ${product.category}</p>
       <h2 style="font-size:25px; color:blue">Price: $ ${product.price}</h2>    
       <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-dark">Add to cart</button>
@@ -28,8 +31,105 @@ const showProducts = (products) => {
    
     `;
     document.getElementById("all-products").appendChild(div);
+    rating(product.id, product.rating.rate);
   }
 };
+
+
+const rating = (id, stars) => {
+
+
+  if (stars >= 4) {
+    document.getElementById(id).innerHTML = `
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star-half-alt"></i>
+    `
+  }
+
+  else if (stars == 4) {
+    document.getElementById(id).innerHTML = `
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="far fa-star"></i>
+
+    `
+  }
+
+
+
+  else if (stars > 3) {
+    document.getElementById(id).innerHTML = `
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star-half-alt"></i>
+    <i class="far fa-star"></i>
+    `
+  }
+
+  else if (stars == 3) {
+    document.getElementById(id).innerHTML = `
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="far fa-star"></i>
+    <i class="far fa-star"></i>
+    `
+  }
+
+
+  else if (stars >= 2) {
+    document.getElementById(id).innerHTML = `
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star-half-alt"></i>
+    <i class="far fa-star"></i>
+    <i class="far fa-star"></i>
+    `
+  }
+
+  else if (stars == 2) {
+    document.getElementById(id).innerHTML = `
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="far fa-star"></i>
+    <i class="far fa-star"></i>
+    <i class="far fa-star"></i>
+    `
+  }
+
+  else if (stars >= 1) {
+    document.getElementById(id).innerHTML = `
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star-half-alt"></i>
+    <i class="far fa-star"></i>
+    <i class="far fa-star"></i>
+    <i class="far fa-star"></i>
+    `
+  }
+
+  else if (stars == 1) {
+    document.getElementById(id).innerHTML = `
+    <i class="fas fa-star"></i>
+    <i class="far fa-star"></i>
+    <i class="far fa-star"></i>
+    <i class="far fa-star"></i>
+    <i class="far fa-star"></i>
+    `
+  }
+
+
+
+
+
+
+}
+  ;
 let count = 0;
 const addToCart = (id, price) => {
   count = count + 1;
